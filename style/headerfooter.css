@@ -1,0 +1,166 @@
+/*header css*/
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures space between logo, menu, and user icon */
+  background-color:#f0f0f0; /* You can adjust this */
+  padding: 3px 15px;
+  border-radius: 20px;
+}
+#logo{
+
+   height: 100px;
+   width: 300px;
+
+}
+#user{
+  height: 60px;
+  width: 55px;
+  cursor: pointer;
+  margin-right: 30px;
+  
+}
+
+ul.menu {
+    list-style-type: none;
+    margin-right: 150px;
+    padding: 5px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    
+  }
+  
+  li.menu {
+    float: left;
+  }
+  
+  li.menu a {
+    display: block;
+    color: rgb(9, 0, 0);
+    text-align: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: large;
+    font-family:Arial, Helvetica, sans-serif;
+
+  }
+  
+  li.menu a:hover {
+    background-color:#aad9ec;
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  /*Footer CSS*************************************************************************************/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    
+  }
+  
+  footer {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    
+   /* max-width: 1200px;*/
+   
+   /*display: flex;
+  justify-content: left;
+  margin-left: 50px;
+  padding-top: 35px;
+  padding-bottom: 35px;*/
+
+  }
+  
+  .footer-section {
+    width: 25%;
+    
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section ul {
+    list-style-type: square;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+
+  .logo{
+
+    height: 100px;
+    width: 300px;
+    margin-right: 200px;
+    
+  }
+  
+  .social{
+       
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+   
+  }
+  .social-icons{
+
+    padding-left: 60px;
+  }
+  
+  .footer-section .logo{
+
+    margin-right: 20px;
+    padding-right: 20px;
+  }
+  
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .footer-bottom a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 10px;
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom p {
+    display: inline;
+
+  }
+  .footer-bottom a{
+
+    color: blue;
+    
+  }
+  

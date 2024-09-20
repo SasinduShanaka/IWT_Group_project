@@ -1,0 +1,177 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #dce4e3;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555;
+}
+.interface{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.fam img{
+
+    width: 500px;
+    height: 750px;
+   float:right;
+   right: 20px;
+   top: 185px;
+   /*border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+}
+
+.container {
+    margin:20px;
+    margin-left: 50px;
+    padding: 20px;
+    max-width: 900px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user_details, .user_manage {
+    display: inline-block;
+    vertical-align: top;
+}
+.user_details {
+    width: 60%;
+    margin-right: 20px;
+    border-right: 2px solid #ccc; /* Optional divider */
+    padding-right: 20px;
+}
+
+.user_details {
+    width: 55%;
+}
+
+.user_details label {
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.user_details input[type="text"], 
+.user_details input[type="email"],
+.user_details input[type="phone"],
+.user_details input[type="file"],
+.user_details input[type="test"] {
+    width: 80%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.user_details img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.user_manage {
+    width: 40%;
+    text-align: center;
+}
+
+.user{
+    width: 100px;
+    height: 100px;
+}
+.buttons img{
+
+    height: 45px;
+    width: 40px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.user_manage h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.user_manage .buttons {
+
+    width: 300px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.user_manage form, .user_manage button {
+    margin-bottom: 10px;
+}
+
+.user_manage button {
+    width: 80%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.user_manage button#btn1 {
+    background-color: #333;
+}
+
+.user_manage button#btn2 {
+    background-color: #f87a7a;
+}
+
+.user_manage button#btn2:hover {
+    background-color: #f80c0c;
+}
+
+.user_manage img {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.btn3 {
+    display: block;
+    width: 40%;
+    margin: 20px auto;
+    background-color: #3da0fc;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn3:hover {
+    background-color: #1668e4;
+}
