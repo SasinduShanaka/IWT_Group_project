@@ -1,0 +1,139 @@
+*{
+    font-family: poppins;
+}
+
+
+body {
+    background-color: #ebebeb98;  
+    font-family: poppins;
+    
+}
+
+.headings {
+    font-family: poppins;
+    font-size: 40px;
+    font-weight: 500;
+    color: #03496c;
+}
+
+
+/*our products */
+.products h2 {
+    
+    padding: 40px;
+    text-align: center;
+   /* color: #3c3c3c;*/
+
+}
+.products p {
+    margin: -50px 5px  ;
+    text-align: center;
+    size: 20px;
+    font-family: "poppins";
+
+}
+
+.card-container {
+    margin: -10px;
+   
+    padding-left: 50px;
+    padding-right: 50px;
+    box-sizing:border-box ;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 100px;
+
+}
+
+.card {
+    width: 350px ;
+    height: 350px;
+    background-color: rgba(245, 248, 250, 0.862);
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(48, 48, 48, 0.231);
+    cursor: pointer;
+}
+/*.card:hover {
+
+background-color: #c5d30b;
+
+}*/
+
+#card1 {
+    background-color: #14709e;
+}
+
+#card2{
+    background-color: #ffffff;
+}
+
+#card3 {
+    background-color: #0bbfd3;
+}
+
+#card4 {
+    background-color: #006496;
+}
+
+#card5 {
+    background-color: #f1f1f1;
+}
+
+#card6 {
+    background-color: #0bbfd3;
+}
+
+
+
+
+
+
+
+.card:hover .card-content {
+    filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(0%) hue-rotate(327deg) brightness(104%) contrast(101%);
+}
+
+
+
+.card-content {
+    padding: 30px 30px;
+    line-height:1.3 ;
+    text-align: center;
+
+
+}
+
+.card-image {
+    width: 50px;
+    height: 50px;
+    filter: brightness(0) saturate(100%) invert(30%) sepia(90%) saturate(6499%) hue-rotate(186deg) brightness(94%) contrast(90%);
+}
+
+
+.card-content h3{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom : 10px;
+    color: #3c3c3c;
+
+}
+
+.card-content p {
+    font-size: 35px;
+    margin-bottom: 20px;
+    color : #666;
+
+}
+
+.card-content .learn-more {
+    font-size: 15px;
+    align-items: center;
+    text-decoration: none;
+    color: #03496c;
+    font-weight: bold;
+
+}
