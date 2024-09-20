@@ -18,7 +18,7 @@ include("header.php");
     <button class="detail_change">Change user details</button><br>
 
     <ul class="list">
-     <li><a href="#">Setting</a></li>
+     <li><a href="#">Settings</a></li>
      <li><a href="#">Help</a></li>
      <li><a href="#">Policies</a></li>
     </ul>
