@@ -12,15 +12,13 @@ function checkpassword()
 	}
 }
 
-function enableButton()
+function checknic()
 {
-    if(document.getElementById("chk").checked)
+    if(document.getElementById("nic").valuelength =! 12)
 	{
-		document.getElementById("sbtbtn").desabled=false;
-	}
-	else
-	{
-		document.getElementById("sbtbtn").desabled=true;
+		alert("Wrong NIC number.");
+		return false;
+		
 	}
 }
 

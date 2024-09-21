@@ -3,14 +3,15 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
-    font-family:"poppins", sans-serif;
+    font-family:'poppins';
 
 }
-.headings {
+.wrapper h1 {
     font-family: poppins;
     font-size: 40px;
     font-weight: 500;
-    color: #03496c;
+    color:#03496c;
+    text-align: center;
 }
 
 
@@ -30,15 +31,8 @@ body
     background-color:white ;
     color:black;
     border-radius: 10px;
-    padding:30px 40px;
+    padding:30px;
     border:groove;
-}
-
-.wrapper h1
-{
-    font-size: 36px;
-    text-align: center;
-    color:#03496c;
 }
 
 .wrapper .input-box
@@ -88,7 +82,7 @@ body
 
 .remember-forgot lable input
 {
-    accent-color: white;
+    accent-color: black;
     margin-right: 3px;
 }
 
