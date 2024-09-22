@@ -1,55 +1,64 @@
 document.getElementById("policyForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const policyNumber = document.getElementById("policyNumber").value;
-    const policyName = document.getElementById("policyName").value;
-    const premium = document.getElementById("premium").value;
-    const coverage = document.getElementById("coverage").value;
+    const PolicyID = document.getElementById("PolicyID").value;
+    const PkgID = document.getElementById("PkgID").value;
+    const Policytype = document.getElementById("Policytype").value;
+    const Policystatus = document.getElementById("Policystatus").value;
+    const EffectiveDate = document.getElementById("EffectiveDate").value;
+    const ExpirationDate = document.getElementById("ExpirationDate").value;
 
     // Check if policy already exists to update or create new
-    const existingPolicyRow = document.querySelector(`#policy-${policyNumber}`);
+    const existingPolicyRow = document.querySelector(`#policy-${PolicyID}`);
     if (existingPolicyRow) {
         // Update policy
-        existingPolicyRow.querySelector('.name').textContent = policyName;
-        existingPolicyRow.querySelector('.premium').textContent = premium;
-        existingPolicyRow.querySelector('.coverage').textContent = coverage;
+        existingPolicyRow.querySelector('.PkgID').textContent = PkgID;
+        existingPolicyRow.querySelector('.Policytype').textContent = Policytype;
+        existingPolicyRow.querySelector('.Policystatus').textContent = Policystatus;
+        existingPolicyRow.querySelector('.EffectiveDate').textContent = EffectiveDate;
+        existingPolicyRow.querySelector('.ExpirationDate').textContent = ExpirationDate;
+        alert("Already existing.");
     } else {
         // Add new policy
-        addPolicyToTable(policyNumber, policyName, premium, coverage);
+        addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate);
     }
 
     // Reset form
     document.getElementById("policyForm").reset();
 });
 
-function addPolicyToTable(policyNumber, policyName, premium, coverage) {
+function addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate) {
     const tableBody = document.getElementById("policyTableBody");
 
     const row = document.createElement("tr");
-    row.setAttribute("id", `policy-${policyNumber}`);
+    row.setAttribute("id", `policy-${PolicyID}`);
     row.innerHTML = `
-        <td>${policyNumber}</td>
-        <td class="name">${policyName}</td>
-        <td class="premium">${premium}</td>
-        <td class="coverage">${coverage}</td>
+        <td>${PolicyID}</td>
+        <td class="PkgID">${PkgID}</td>
+        <td class="Policytype">${Policytype}</td>
+        <td class="Policystatus">${Policystatus}</td>
+        <td class="EffectiveDate">${EffectiveDate}</td>
+        <td class="ExpirationDate">${ExpirationDate}</td>
         <td class="actions">
-            <button class="update" onclick="updatePolicy('${policyNumber}')">Update</button>
-            <button onclick="deletePolicy('${policyNumber}')">Delete</button>
+            <button class="update" onclick="updatePolicy('${PolicyID}')">Update</button>
+            <button onclick="deletePolicy('${PolicyID}')">Delete</button>
         </td>
     `;
 
     tableBody.appendChild(row);
 }
 
-function updatePolicy(policyNumber) {
-    const policyRow = document.getElementById(`policy-${policyNumber}`);
-    document.getElementById("policyNumber").value = policyNumber;
-    document.getElementById("policyName").value = policyRow.querySelector('.name').textContent;
-    document.getElementById("premium").value = policyRow.querySelector('.premium').textContent;
-    document.getElementById("coverage").value = policyRow.querySelector('.coverage').textContent;
+function updatePolicy(policyID) {
+    const policyRow = document.getElementById(`policy-${policyID}`);
+    document.getElementById("PolicyID").value = policyID;
+    document.getElementById("PkgID").value = policyRow.querySelector('.PkgID').textContent;
+    document.getElementById("Policytype").value = policyRow.querySelector('.Policytype').textContent;
+    document.getElementById("Policystatus").value = policyRow.querySelector('.Policystatus').textContent;
+    document.getElementById("EffectiveDate").value = policyRow.querySelector('.EffectiveDate').textContent;
+    document.getElementById("ExpirationDate").value = policyRow.querySelector('.ExpirationDate').textContent;
 }
 
-function deletePolicy(policyNumber) {
-    const policyRow = document.getElementById(`policy-${policyNumber}`);
+function deletePolicy(policyID) {
+    const policyRow = document.getElementById(`policy-${policyID}`);
     policyRow.remove();
 }
