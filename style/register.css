@@ -34,14 +34,8 @@ body
     border:groove;
 }
 
-
-
 .fields .policy
 {
-    
-   
-    
-
     display:flex;
     justify-content: space-between;
     font-size:14.5px;
@@ -50,7 +44,6 @@ body
 
 .policy lable input
 {
-    
     accent-color: black;
     margin-right: 10px;
 }
@@ -60,7 +53,6 @@ body
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
-    
 }
 
 .register-link p a 
@@ -79,7 +71,6 @@ body
 .register-link  a:hover 
 {
     color: blue;
-    
 }
 
 .container form .fields
@@ -96,9 +87,6 @@ form .fields .input-field
     width:calc(100% / 1 - 15px);
     flex-direction: column;
     margin:-10px 0;
-
-    
-    
 }
 
 .input-field label
@@ -110,7 +98,6 @@ form .fields .input-field
 
 .input-field input
 {
-    
     width:350px;
     height:40px;
     background:transparent;

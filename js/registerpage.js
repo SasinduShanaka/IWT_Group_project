@@ -2,23 +2,12 @@ function checkpassword()
 {
 	if(document.getElementById("psw").value != document.getElementById("repsw").value)
 	{
-		alert("password mismatched.");
+		alert("Password Mismatched.");
 		return false;
 	}
 	else
 	{
-		alert("success!");
+		alert("Successfully Registered!");
 		return true;
 	}
 }
-
-function checknic()
-{
-    if(document.getElementById("nic").valuelength =! 12)
-	{
-		alert("Wrong NIC number.");
-		return false;
-		
-	}
-}
-
