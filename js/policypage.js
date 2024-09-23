@@ -9,24 +9,24 @@ document.getElementById("policyForm").addEventListener("submit", function(event)
     const EffectiveDate = document.getElementById("EffectiveDate").value;
     const ExpirationDate = document.getElementById("ExpirationDate").value;
 
-    // Check if policy already exists to update or create new
+    
     const existingPolicyRow = document.querySelector(`#policy-${PolicyID}`);
     if (existingPolicyRow) 
     {
-        // Update policy
+        
         existingPolicyRow.querySelector('.PkgID').textContent = PkgID;
         existingPolicyRow.querySelector('.Policytype').textContent = Policytype;
         existingPolicyRow.querySelector('.Policystatus').textContent = Policystatus;
         existingPolicyRow.querySelector('.EffectiveDate').textContent = EffectiveDate;
         existingPolicyRow.querySelector('.ExpirationDate').textContent = ExpirationDate;
-        alert("Already existing.");
-    } else 
+    } 
+    else 
     {
-        // Add new policy
+        
         addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate);
     }
 
-    // Reset form
+    
     document.getElementById("policyForm").reset();
 });
 
