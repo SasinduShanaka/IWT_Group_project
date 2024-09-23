@@ -1,4 +1,5 @@
-document.getElementById("policyForm").addEventListener("submit", function(event) {
+document.getElementById("policyForm").addEventListener("submit", function(event) 
+{
     event.preventDefault();
 
     const PolicyID = document.getElementById("PolicyID").value;
@@ -10,7 +11,8 @@ document.getElementById("policyForm").addEventListener("submit", function(event)
 
     // Check if policy already exists to update or create new
     const existingPolicyRow = document.querySelector(`#policy-${PolicyID}`);
-    if (existingPolicyRow) {
+    if (existingPolicyRow) 
+    {
         // Update policy
         existingPolicyRow.querySelector('.PkgID').textContent = PkgID;
         existingPolicyRow.querySelector('.Policytype').textContent = Policytype;
@@ -18,7 +20,8 @@ document.getElementById("policyForm").addEventListener("submit", function(event)
         existingPolicyRow.querySelector('.EffectiveDate').textContent = EffectiveDate;
         existingPolicyRow.querySelector('.ExpirationDate').textContent = ExpirationDate;
         alert("Already existing.");
-    } else {
+    } else 
+    {
         // Add new policy
         addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate);
     }
@@ -27,7 +30,8 @@ document.getElementById("policyForm").addEventListener("submit", function(event)
     document.getElementById("policyForm").reset();
 });
 
-function addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate) {
+function addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDate, ExpirationDate) 
+{
     const tableBody = document.getElementById("policyTableBody");
 
     const row = document.createElement("tr");
@@ -48,7 +52,8 @@ function addPolicyToTable(PolicyID, PkgID, Policytype, Policystatus, EffectiveDa
     tableBody.appendChild(row);
 }
 
-function updatePolicy(policyID) {
+function updatePolicy(policyID) 
+{
     const policyRow = document.getElementById(`policy-${policyID}`);
     document.getElementById("PolicyID").value = policyID;
     document.getElementById("PkgID").value = policyRow.querySelector('.PkgID').textContent;
@@ -58,7 +63,8 @@ function updatePolicy(policyID) {
     document.getElementById("ExpirationDate").value = policyRow.querySelector('.ExpirationDate').textContent;
 }
 
-function deletePolicy(policyID) {
+function deletePolicy(policyID) 
+{
     const policyRow = document.getElementById(`policy-${policyID}`);
     policyRow.remove();
 }
