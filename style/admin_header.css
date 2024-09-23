@@ -1,0 +1,54 @@
+/*header css*/
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures space between logo, menu, and user icon */
+    background-color:rgb(0, 163, 185); /* You can adjust this */
+    padding: 3px 15px;
+    border-radius: 20px;
+  }
+  #logo{
+  
+     height: 100px;
+     width: 300px;
+  
+  }
+  #user{
+    height: 60px;
+    width: 55px;
+    cursor: pointer;
+    margin-right: 30px;
+    
+  }
+  
+  ul.menu {
+      list-style-type: none;
+      margin-right: 150px;
+      padding: 5px;
+      overflow: hidden;
+      background-color:rgb(0, 163, 185);
+      border-radius: 10px;
+      
+    }
+    
+    li.menu {
+      float: left;
+    }
+    
+    li.menu a {
+      display: block;
+      color: rgb(0, 177, 252);
+      text-align: center;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bolder;
+      font-size: large;
+      font-family:Arial, Helvetica, sans-serif;
+  
+    }
+    
+    li.menu a:hover {
+      background-color:#00b7ff;
+      padding: 18px;
+      border-radius: 10px;
+    }

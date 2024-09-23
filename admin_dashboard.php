@@ -1,3 +1,7 @@
+
+<?php 
+  include("admin_header.php")
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,59 +17,83 @@
 
 
     <section class="products">
-        <h2 class="headings">Welcome Admin!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit... Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem vitae accusantium sint explicabo quia aspernatur, sunt in perferendis! Saepe atque ea cumque laborum, nemo vero in expedita omnis doloremque necessitatibus tenetur quasi. Perspiciatis iure minima qui ea esse quod tenetur non libero suscipit recusandae, quibusdam repellendus hic sed consequatur eius, animi vitae dignissimos laudantium temporibus numquam, nam autem totam? Asperiores vel deserunt exercitationem assumenda quidem repudiandae? Sint voluptatibus nulla nesciunt, odit sunt officiis ullam illum.</p>
-        <div class="card-container">
-            <div class="card" id="card1"  >
-                <div class="card-content" >
-                <img src="./images/fam.png" alt="Card Image" class="card-image">
-                <h3>Life Insurance <br>Plans </h3>
-                <a href="www.google.com" class="learn-more">Learn More</a>
-                </div>
-            </div>
-            <div class="card" id="card2">
-                <div class="card-content">
-                <img src="./images/retire.png" alt="Card Image" class="card-image">
-                <h3>Retirement Plans</h3>
-                <a href="#" class="learn-more">Learn More</a>
-                </div>
-            </div>
-            <div class="card" id="card3">
-                <div class="card-content">
-                <img src="./images/health.png" alt="Card Image" class="card-image">
-                <h3>Medical <br>Plans</h3>
-                <a href="#" class="learn-more">Learn More</a>
-                </div>
-            </div>
-
-            <div class="card" id="card4">
-                <div class="card-content">
-                <img src="./images/inv.png" alt="Card Image" class="card-image">
-                <h3>Investment Plans</h3>
-               
-                <a href="#" class="learn-more">Learn More</a>
-                </div>
-            </div>
-
-            <div class="card" id="card5">
-                <div class="card-content">
-                <img src="./images/group.png" alt="Card Image" class="card-image">
-                <h3>Group <br>Plans</h3>
-                <a href="#" class="learn-more">Learn More</a>
-                </div>
-            </div>
-
-            <div class="card" id="card6">
-                <div class="card-content">
-                <img src="./images/group.png" alt="Card Image" class="card-image">
-                <h3>Group <br>Plans</h3>
-                <a href="#" class="learn-more">Learn More</a>
-                </div>
+        
+    <div class="card-container">
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/users.png" alt="Card Image" class="card-image">
+                <h3>Manage Users </h3>
             </div>
         </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/plans1.png" alt="Card Image" class="card-image">
+                <h3>Manage Packages</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/claims.png" alt="Card Image" class="card-image">
+                <h3>Manage Claims</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/feedbacks.png" alt="Card Image" class="card-image">
+                <h3>Review Feedbacks</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/messages.png" alt="Card Image" class="card-image">
+                <h3>Respond Messages</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/news.png" alt="Card Image" class="card-image">
+                <h3>Manage News</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/admins.png" alt="Card Image" class="card-image">
+                <h3>Manage Admins</h3>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://www.google.com">
+        <div class="card" id="card1">
+            <div class="card-content">
+                <img src="./images/fam.png" alt="Card Image" class="card-image">
+                <h3>Manage Policies </h3>
+            </div>
+        </div>
+    </a>
+</div>
     </section>
 
-
+<div class="rectangle"></div>
 
 
 </body>

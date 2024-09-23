@@ -12,8 +12,11 @@
     <div class="fade-in-text" id="fadeText">
     <h1>Welcome to Admin Dashboard</h1>
     <p>Hello Praneesha !</p>
-    <button class="button" style="justify-content: center;"><span>Enter</span></button>
-</div>
+    </div>
+
+    <div>
+<button class="button" style="justify-content: center;"><span>Enter</span></button>
+   </div>
 
     <script src="./js/admin_landing.js"></script>
 </body>
