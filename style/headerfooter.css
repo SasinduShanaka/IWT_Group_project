@@ -1,166 +1,218 @@
-/*header css*/
+/* Header CSS */
 #navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensures space between logo, menu, and user icon */
-  background-color:#f0f0f0; /* You can adjust this */
-  padding: 3px 15px;
+  justify-content: space-between;
+  background-color: #f0f0f0; /* You can adjust this */
+  padding: 10px 15px;
   border-radius: 20px;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
-#logo{
 
-   height: 100px;
-   width: 300px;
-
+#logo {
+  height: 80px; /* Adjust height for responsiveness */
+  width: auto; /* Set width to auto to maintain aspect ratio */
 }
-#user{
-  height: 60px;
-  width: 55px;
+
+#user {
+  height: 40px; /* Adjust height for responsiveness */
+  width: 40px; /* Adjust width for responsiveness */
   cursor: pointer;
   margin-right: 30px;
-  
 }
 
 ul.menu {
-    list-style-type: none;
-    margin-right: 150px;
-    padding: 5px;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    
-  }
-  
-  li.menu {
-    float: left;
-  }
-  
-  li.menu a {
-    display: block;
-    color: rgb(9, 0, 0);
-    text-align: center;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bolder;
-    font-size: large;
-    font-family:Arial, Helvetica, sans-serif;
+  list-style-type: none;
+  margin: 0; /* Remove right margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox for the menu */
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
 
+li.menu {
+  margin: 0 5px; /* Add margin for spacing */
+}
+
+li.menu a {
+  display: block;
+  color: rgb(9, 0, 0);
+  text-align: center;
+  padding: 10px 15px; /* Adjust padding for better fit */
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: medium; /* Adjust font size */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+li.menu a:hover {
+  background-color: #aad9ec;
+  border-radius: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  #navbar {
+      flex-direction: column; /* Stack items vertically on small screens */
+      align-items: flex-start; /* Align items to the start */
   }
-  
-  li.menu a:hover {
-    background-color:#aad9ec;
-    padding: 18px;
-    border-radius: 10px;
+
+  ul.menu {
+      width: 100%; /* Make the menu take full width */
+      justify-content: center; /* Center menu items */
+      margin-top: 10px; /* Add some space above the menu */
   }
+
+  li.menu {
+      flex: 1; /* Allow menu items to grow */
+      text-align: center; /* Center text */
+  }
+
+  li.menu a {
+      padding: 10px; /* Adjust padding */
+      font-size: larger; /* Increase font size on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  #logo {
+      height: 60px; /* Further adjust height for smaller screens */
+  }
+
+  #user {
+      height: 35px; /* Adjust user icon size */
+      width: 35px; /* Adjust user icon size */
+  }
+
+  li.menu a {
+      font-size: medium; /* Adjust font size */
+  }
+}
+
 
   /*Footer CSS*************************************************************************************/
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    
-  }
-  
-  footer {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-top: 1px solid #ccc;
-  }
-  
+ /* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow wrapping of items on smaller screens */
+  margin: auto;
+  max-width: 1200px; /* Set a max-width for larger screens */
+}
+
+.footer-section {
+  flex: 1; /* Allow sections to grow */
+  min-width: 200px; /* Minimum width for responsiveness */
+  margin: 10px; /* Add spacing between sections */
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-section ul {
+  list-style-type: square;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  height: 100px;
+  width: auto; /* Maintain aspect ratio */
+  margin-right: 20px;
+}
+
+.social {
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+}
+
+.social-icons {
+  padding-left: 60px; /* Adjust padding */
+}
+
+/* Footer Bottom Styles */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.footer-bottom a {
+  text-decoration: none;
+  color: #333;
+  margin-left: 10px;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom p {
+  display: inline;
+}
+
+.footer-bottom a {
+  color: blue;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .footer-container {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    
-   /* max-width: 1200px;*/
-   
-   /*display: flex;
-  justify-content: left;
-  margin-left: 50px;
-  padding-top: 35px;
-  padding-bottom: 35px;*/
+      flex-direction: column; /* Stack sections vertically */
+      align-items: center; /* Center items */
+  }
 
+  .social-icons {
+      padding-left: 0; /* Remove left padding */
+      margin-top: 15px; /* Add space above social icons */
   }
-  
-  .footer-section {
-    width: 25%;
-    
-  }
-  
+}
+
+@media (max-width: 480px) {
   .footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .footer-section ul {
-    list-style-type: square;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-section ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .footer-section ul li a:hover {
-    text-decoration: underline;
+      font-size: 16px; /* Adjust font size for smaller screens */
   }
 
-  .logo{
-
-    height: 100px;
-    width: 300px;
-    margin-right: 200px;
-    
-  }
-  
-  .social{
-       
-    height: 50px;
-    width: 50px;
-    padding: 10px;
-   
-  }
-  .social-icons{
-
-    padding-left: 60px;
-  }
-  
-  .footer-section .logo{
-
-    margin-right: 20px;
-    padding-right: 20px;
-  }
-  
-  
   .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
+      font-size: 12px; /* Decrease font size */
   }
-  
-  .footer-bottom a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 10px;
-  }
-  
-  .footer-bottom a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-bottom p {
-    display: inline;
 
+  .logo {
+      height: 80px; /* Adjust logo size */
   }
-  .footer-bottom a{
 
-    color: blue;
-    
+  .social {
+      height: 40px; /* Adjust social icon size */
+      width: 40px; /* Adjust social icon size */
   }
-  
+}

@@ -83,11 +83,8 @@ h1 {
     display: inline-block;
 }
 
-.user_details input[type="text"], 
-.user_details input[type="email"],
-.user_details input[type="phone"],
-.user_details input[type="file"],
-.user_details input[type="test"] {
+.user_details input
+ {
     width: 80%;
     padding: 8px;
     margin: 10px 0;
@@ -142,15 +139,15 @@ h1 {
     font-size: 14px;
 }
 
-.user_manage button#btn1 {
+.user_manage #btn1 {
     background-color: #333;
 }
 
-.user_manage button#btn2 {
+.user_manage #btn2 {
     background-color: #f87a7a;
 }
 
-.user_manage button#btn2:hover {
+.user_manage #btn2:hover {
     background-color: #f80c0c;
 }
 

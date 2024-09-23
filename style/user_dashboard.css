@@ -1,0 +1,105 @@
+body{
+
+    background-color: rgb(255, 255, 255);
+}
+.dashboard{
+    
+    padding-top: 20px;
+    width: 100%;
+    height: 80px;
+    margin: auto;
+    background-color:#03496c;
+    text-align: center;
+    color: white;
+   
+}
+#date{
+   text-align:right;
+
+   margin-right: 10px;
+}
+#greet{
+    margin-top: 20px;
+    text-align: left;
+    width: fit-content;
+    margin-left: 10px;
+}
+.side_bar{
+
+   
+   padding: 24px; 
+   box-shadow:rgb(166, 195, 209);
+   max-width: 250px;
+   background-color:rgb(255, 255, 255);
+   border-radius: 30px;
+   border: 1px solid #ccc;
+
+}
+.list li{
+
+    text-decoration: none;
+    padding-top: 20px;
+}
+.side_bar button{
+    
+    background-color:#f87a7a;
+    border: none;              
+    color: rgb(255, 255, 255);             
+    padding: 10px 20px;        
+    text-align: center;        
+    text-decoration: none;    
+    display: inline-block;     
+    font-size: 16px;           
+    border-radius: 30px;     
+    margin-top: 10px;   
+    
+
+}
+.side_bar button:hover{
+
+    background-color:#f80c0c ;
+}
+#username{
+
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+}
+#activated_plans , #make_claim, #pay {
+
+    width: 350px ;
+    height: 350px;
+    background-color: rgba(245, 248, 250, 0.862);
+    border-radius: 30px;
+    box-shadow: 0px 5px 5px rgba(48, 48, 48, 0.231);
+    cursor: pointer;
+    background-color: #24a59f;
+    text-align: center;
+    padding-top: 30px;
+    margin: 20px;
+
+}
+
+.container img{
+
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+.container{
+
+    display:flex;
+    margin: 100px;
+}
+.card{
+
+    display: flex;
+    margin-right: 20px;
+}
+#activated_plans:hover  , #make_claim:hover , #pay:hover {
+   
+     
+     background-color: rgb(75, 212, 148);
+    
+     
+}
