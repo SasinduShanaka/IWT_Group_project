@@ -69,14 +69,19 @@ body{
 
     width: 350px ;
     height: 350px;
-    background-color: rgba(245, 248, 250, 0.862);
+    /* background-color: rgba(245, 248, 250, 0.862); */
     border-radius: 30px;
     box-shadow: 0px 5px 5px rgba(48, 48, 48, 0.231);
     cursor: pointer;
-    background-color: #24a59f;
+    /* background-color: rgb(0, 163, 185);; */
     text-align: center;
     padding-top: 30px;
     margin: 20px;
+
+    background-color: #ebebeb98; 
+    /* border-radius: 10px; */
+    box-shadow: 5px 5px 5px rgba(21, 21, 21, 0.516);
+   
 
 }
 
@@ -90,6 +95,8 @@ body{
 
     display:flex;
     margin: 100px;
+
+    
 }
 .card{
 
@@ -99,7 +106,7 @@ body{
 #activated_plans:hover  , #make_claim:hover , #pay:hover {
    
      
-     background-color: rgb(75, 212, 148);
+     background-color: rgb(0, 163, 185);
     
      
 }
