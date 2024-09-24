@@ -91,34 +91,39 @@ li.menu a:hover {
 }
 
 
-  /*Footer CSS*************************************************************************************/
- /* Universal Reset */
-* {
+ /*Footer CSS*************************************************************************************/
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
+  
 }
 
-/* Footer Styles */
 footer {
   background-color: #f4f4f4;
   padding: 20px;
-  border-top: 1px solid #ccc;
+  border-top: 100px solid #ccc;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap; /* Allow wrapping of items on smaller screens */
   margin: auto;
-  max-width: 1200px; /* Set a max-width for larger screens */
+  
+ /* max-width: 1200px;*/
+ 
+ /*display: flex;
+justify-content: left;
+margin-left: 50px;
+padding-top: 35px;
+padding-bottom: 35px;*/
+
 }
 
 .footer-section {
-  flex: 1; /* Allow sections to grow */
-  min-width: 200px; /* Minimum width for responsiveness */
-  margin: 10px; /* Add spacing between sections */
+  width: 25%;
+  
 }
 
 .footer-section h3 {
@@ -143,23 +148,33 @@ footer {
   text-decoration: underline;
 }
 
-.logo {
+.logo{
+
   height: 100px;
-  width: auto; /* Maintain aspect ratio */
-  margin-right: 20px;
+  width: 300px;
+  margin-right: 200px;
+  
 }
 
-.social {
+.social{
+     
   height: 50px;
   width: 50px;
   padding: 10px;
+ 
+}
+.social-icons{
+
+  padding-left: 60px;
 }
 
-.social-icons {
-  padding-left: 60px; /* Adjust padding */
+.footer-section .logo{
+
+  margin-right: 20px;
+  padding-right: 20px;
 }
 
-/* Footer Bottom Styles */
+
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
@@ -179,40 +194,10 @@ footer {
 
 .footer-bottom p {
   display: inline;
-}
 
-.footer-bottom a {
+}
+.footer-bottom a{
+
   color: blue;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .footer-container {
-      flex-direction: column; /* Stack sections vertically */
-      align-items: center; /* Center items */
-  }
-
-  .social-icons {
-      padding-left: 0; /* Remove left padding */
-      margin-top: 15px; /* Add space above social icons */
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-section h3 {
-      font-size: 16px; /* Adjust font size for smaller screens */
-  }
-
-  .footer-bottom {
-      font-size: 12px; /* Decrease font size */
-  }
-
-  .logo {
-      height: 80px; /* Adjust logo size */
-  }
-
-  .social {
-      height: 40px; /* Adjust social icon size */
-      width: 40px; /* Adjust social icon size */
-  }
+  
 }
