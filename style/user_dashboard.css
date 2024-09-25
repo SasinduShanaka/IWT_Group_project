@@ -13,6 +13,11 @@ body{
     color: white;
    
 }
+.side{
+
+    position: absolute;
+    text-align: right;
+}
 #date{
    text-align:right;
 
@@ -31,7 +36,6 @@ body{
    box-shadow:rgb(166, 195, 209);
    max-width: 250px;
    background-color:rgb(255, 255, 255);
-   border-radius: 30px;
    border: 1px solid #ccc;
 
 }

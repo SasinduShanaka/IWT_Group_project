@@ -7,14 +7,15 @@ include("header.php");
     
     <title>Dashboard</title>
     <link rel="stylesheet" href="./style/user_dashboard.css">
-    <script src="./js/user_dashboard.js"></script>
+    <script src="js\user_dashboard.js"></script>
 
 </head>
 <body onload="setDate();greeting()">
      <h1 class="dashboard">Dashboard</h1>
-    <div class="side"> <h2 id="greet"></h2>
+    <div class="side">
+       <h2 id="greet"></h2>
        <h2 id="date"></h2>
-       </div>
+    </div>
        <div class="card">
         <div class="side_bar">
            <img src="./images/user_icon.png" alt="icon"><br>
