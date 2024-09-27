@@ -8,14 +8,73 @@
 <link rel="stylesheet" href="../IWT_Group_project/style/manage_admins.css">
 </head>
 <body>
-    <div class="container my-5">
+<!-- form -->
+<div class="container " id="form-container">
+    <h2>New Admin</h2>
+
+
+<form method="post" action="">
+   
+   <div class="inputs">
+    
+     <label for="admin_id">Enter Admin ID</label><br>
+     <input type="text" name="admin_id" id="id" required ><br>
+     <label for="admin_name">Enter Name</label><br>
+     <input type="text" name="admin_name" id="name" required><br>
+     <label for="admin_username">Enter Username</label><br>
+     <input type="text" name="admin_username" id="username" required><br>
+     <label for="admin_password">Enter password</label><br>
+     <input type="password" name="password" id="password" required><br>
+
+
+     <button type="submit" name="add_admin" class="button" id="btn">Add new admin</button>
+    
+   </div> 
+ </form>
+
+ <!-- php code- adding data to the database-->
+ <?php
+ session_start();
+ $connection = mysqli_connect("localhost" , "root" , "" , "IWT_Group_project") ;
+if(isset($_POST['add_admin']))
+{
+    $id=$_POST['admin_id'];
+    $name=$_POST['admin_name'];
+    $username=$_POST['admin_username'];
+    $password=$_POST['password'];
+
+    $query = "INSERT INTO admin(id,name,username,password) VALUES ('$id' , ' $name' , '$username' , ' $password')" ;
+
+    $query_run = mysqli_query($connection,  $query);
+
+    if ($query_run) {
+      echo "saved" ;
+      $_SESSION['success'] = "Admin account added" ;
+      header('Location: manage_admins.php');
+
+    }
+    else {
+        $_SESSION['status'] = "Cannot add the admin account" ;
+      header('Location: manage_admins.php');
+    }
+}
+
+?>
+
+</div>
+
+<br>
+
+
+<!-- table -->
+    <div class="container " id="table-container">
         <h2>List of Admins</h2>
-        <a class="button" id="btn"  href="create.php" role="button">New Admin</a>
+        <!-- <a class="button" id="btn"  href="create.php" role="button">New Admin</a> -->
         <br>
         <!-- table-->
         <?php
-                $connection= mysqli_connect("localhost" , "root" , "" , "testing01") ;
-                $query = "SELECT * FROM admins" ;
+                $connection= mysqli_connect("localhost" , "root" , "" , "IWT_Group_project") ;
+                $query = "SELECT * FROM admin" ;
                 $query_run = mysqli_query($connection , $query)
                  ?>
                
@@ -31,7 +90,7 @@
             </thead>
 
             <tbody>
-            
+            <!-- extracting data from database -->
                <?php 
                if(mysqli_num_rows($query_run) > 0 )  
                {
@@ -73,3 +132,5 @@
     </div>
 </body>
 </html>
+
+
