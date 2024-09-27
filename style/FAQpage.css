@@ -28,29 +28,12 @@ body
     width: 400px;
     height: 200px;
     margin-right: 15px;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    
 }
 
 .faq:hover .faq-icon 
 {
-    animation: bounce 1s ease-in-out;
     opacity: 1; 
-
-}
-
-@keyframes bounce 
-{
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px); /* Move the image up */
-    }
-}
-
-.faq:hover .faq-icon 
-{
-    animation: bounce 0.5s ease-in-out;
 }
 
 section
@@ -109,7 +92,3 @@ title
 
 }
 
-.faq.active svg
-{
-    transform: rotate(180deg);
-}

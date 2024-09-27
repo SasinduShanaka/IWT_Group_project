@@ -3,9 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between; /* Ensures space between logo, menu, and user icon */
-    background-color:rgb(0, 163, 185); /* You can adjust this */
+    background-color:#f0f0f0; /* You can adjust this */
     padding: 3px 15px;
     border-radius: 20px;
+    margin-top: auto;
   }
   #logo{
   
@@ -26,7 +27,7 @@
       margin-right: 150px;
       padding: 5px;
       overflow: hidden;
-      background-color:rgb(0, 163, 185);
+      background-color:#f0f0f0;
       border-radius: 10px;
       
     }
@@ -37,7 +38,7 @@
     
     li.menu a {
       display: block;
-      color: rgb(0, 177, 252);
+      color: rgb(0, 0, 0);
       text-align: center;
       padding: 15px 30px;
       text-decoration: none;
