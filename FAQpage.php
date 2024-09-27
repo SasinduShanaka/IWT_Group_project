@@ -23,10 +23,8 @@
 
             <div class="faq">
                 <div class="question">
-                <img src="images/package.jpg"  class="faq-icon">
+                    <img src="images/package.jpg"  class="faq-icon">
                     <h3>What type of packages do you offer?</h3>
-
-                    
                 </div>
                 <div class="answer">
                     <p>We offer a of package options, including Life Insurance, Retirement Plan, Medical Plans, Life Invesment and more.Our plans are desinged to meet the diverse needs of our customers and provide comprehensive protection.</p>
@@ -35,10 +33,8 @@
 
             <div class="faq">
                 <div class="question">
-                <img src="images/application.jpg"  class="faq-icon">
+                    <img src="images/application.jpg"  class="faq-icon">
                     <h3>How do I apply for a life insurance plan?</h3>
-
-                    
                 </div>
                 <div class="answer">
                     <p>To apply for a life insurance plan,you can visit our website and you can contact our customer service team who will guide you through the application process.</p>
@@ -47,10 +43,8 @@
 
             <div class="faq">
                 <div class="question">
-                <img src="images/claim.jpg"  class="faq-icon">
+                    <img src="images/claim.jpg"  class="faq-icon">
                     <h3>What is the process for filling claim?</h3>
-
-                    
                 </div>
                 <div class="answer">
                     <p>If you need to file a claim you can do so by contacting our claims department. They will guide you through the process and provide you with the necessary forms and instructions. we aim to process claims efficiently and fairly, ensuring that our customers receive the benifits they are entitled.</p>
@@ -59,10 +53,8 @@
 
             <div class="faq">
                 <div class="question">
-                <img src="images/contact.jpg"  class="faq-icon">
+                    <img src="images/contact.jpg"  class="faq-icon">
                     <h3>How can I contact customer support?</h3>
-
-                    
                 </div>
                 <div class="answer">
                     <p>Our customer support team is available to assist you with any questions or concerns.You can reach us by phone at 0111234566 or by email at support@lifeguardinsurance.com.We strive to provide prompt and helpful assistance to all of our customers.</p>
