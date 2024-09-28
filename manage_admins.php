@@ -8,67 +8,82 @@
     <link rel="stylesheet" href="../IWT_Group_project/style/manage_admins.css">
 </head>
 <body>
-<!-- form -->
+
+<?php
+session_start();
+$connection = mysqli_connect("localhost", "root", "", "IWT_Group_project");
+
+// Fetching data for edit
+if (isset($_GET['edit_id'])) {
+    $id = $_GET['edit_id'];
+    $query = "SELECT * FROM admin WHERE id='$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($row = mysqli_fetch_assoc($query_run)) {
+        $admin_id = $row['id'];
+        $admin_name = $row['name'];
+        $admin_username = $row['username'];
+        $admin_password = $row['password'];
+    }
+}
+
+// Delete admin logic
+if (isset($_GET['delete_id'])) {
+    $id = $_GET['delete_id'];
+    $query = "DELETE FROM admin WHERE id='$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account deleted";
+        header('Location: manage_admins.php');
+    } else {
+        $_SESSION['status'] = "Cannot delete the admin account";
+        header('Location: manage_admins.php');
+    }
+}
+
+// Adding admin data
+if (isset($_POST['add_admin'])) {
+    $id = $_POST['admin_id'];
+    $name = $_POST['admin_name'];
+    $username = $_POST['admin_username'];
+    $password = $_POST['password'];
+
+    $query = "INSERT INTO admin(id, name, username, password) VALUES ('$id', '$name', '$username', '$password')";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account added";
+        header('Location: manage_admins.php');
+    } else {
+        $_SESSION['status'] = "Cannot add the admin account";
+        header('Location: manage_admins.php');
+    }
+}
+
+// Updating admin data
+if (isset($_POST['update_admin'])) {
+    $id = $_POST['admin_id'];
+    $name = $_POST['admin_name'];
+    $username = $_POST['admin_username'];
+    $password = $_POST['password'];
+
+    $query = "UPDATE admin SET name='$name', username='$username', password='$password' WHERE id='$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account updated";
+        header('Location: manage_admins.php');
+    } else {
+        $_SESSION['status'] = "Cannot update the admin account";
+        header('Location: manage_admins.php');
+    }
+}
+?>
+
+<!-- Form to Add or Edit Admin -->
 <div class="container" id="form-container">
-    <h2>New Admin</h2>
-
-    <?php
-    session_start();
-    $connection = mysqli_connect("localhost", "root", "", "IWT_Group_project");
-
-    // Fetching data for edit
-    if (isset($_GET['edit_id'])) {
-        $id = $_GET['edit_id'];
-        $query = "SELECT * FROM admin WHERE id='$id'";
-        $query_run = mysqli_query($connection, $query);
-
-        if ($row = mysqli_fetch_assoc($query_run)) {
-            $admin_id = $row['id'];
-            $admin_name = $row['name'];
-            $admin_username = $row['username'];
-            $admin_password = $row['password'];
-        }
-    }
-
-    // Adding or updating data
-    if (isset($_POST['add_admin'])) {
-        $id = $_POST['admin_id'];
-        $name = $_POST['admin_name'];
-        $username = $_POST['admin_username'];
-        $password = $_POST['password'];
-
-        $query = "INSERT INTO admin(id, name, username, password) VALUES ('$id', '$name', '$username', '$password')";
-        $query_run = mysqli_query($connection, $query);
-
-        if ($query_run) {
-            $_SESSION['success'] = "Admin account added";
-            header('Location: manage_admins.php');
-        } else {
-            $_SESSION['status'] = "Cannot add the admin account";
-            header('Location: manage_admins.php');
-        }
-    }
-
-    // Update admin data
-    if (isset($_POST['update_admin'])) {
-        $id = $_POST['admin_id'];
-        $name = $_POST['admin_name'];
-        $username = $_POST['admin_username'];
-        $password = $_POST['password'];
-
-        $query = "UPDATE admin SET name='$name', username='$username', password='$password' WHERE id='$id'";
-        $query_run = mysqli_query($connection, $query);
-
-        if ($query_run) {
-            $_SESSION['success'] = "Admin account updated";
-            header('Location: manage_admins.php');
-        } else {
-            $_SESSION['status'] = "Cannot update the admin account";
-            header('Location: manage_admins.php');
-        }
-    }
-    ?>
-
+    <h2><?php echo isset($admin_id) ? 'Edit Admin' : 'New Admin'; ?></h2>
     <form method="post" action="">
         <div class="inputs">
             <label for="admin_id">Enter Admin ID</label><br>
@@ -91,17 +106,15 @@
 
 <br>
 
-<!-- table -->
+<!-- Admin Table -->
 <div class="container" id="table-container">
     <h2>List of Admins</h2>
     <br>
-    
-    <!-- Fetch and display list of admins -->
+    <!-- Fetch and Display List of Admins -->
     <?php
     $query = "SELECT * FROM admin";
     $query_run = mysqli_query($connection, $query);
     ?>
-
     <table class="table">
         <thead>
             <tr>
@@ -124,7 +137,7 @@
                     <td><?php echo $row['password']; ?></td>
                     <td>
                         <a class='button' id='btn1' href='manage_admins.php?edit_id=<?php echo $row['id']; ?>'>Edit</a>
-                        <a class='button' id='btn2' href='delete_admin.php?id=<?php echo $row['id']; ?>'>Delete</a>
+                        <a class='button' id='btn2' href='manage_admins.php?delete_id=<?php echo $row['id']; ?>' onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
                     </td>
                 </tr>
                 <?php
