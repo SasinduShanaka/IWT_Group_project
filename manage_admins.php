@@ -105,8 +105,13 @@ if(isset($_POST['add_admin']))
                      <td><?php echo $row['username']; ?></td>
                      <td><?php echo $row['password']; ?></td>
                     <td>
+                    <form action="" method="post">
+                        <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
                      <a class='button' id='btn1' href='edit_admins.php?id=$row[id]'>Edit</a>
+                     </form>
+              
                      <a class='button' id='btn2' href='delete_admins.php?id=$row[id]'>Delete</a>
+                   
                     </td>
                  </tr>
 
