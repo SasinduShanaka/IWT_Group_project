@@ -6,6 +6,7 @@
     font-family:'poppins';
 
 }
+
 .container h1 {
     font-family: poppins;
     font-size: 40px;
@@ -13,7 +14,6 @@
     color:#03496c;
     text-align: center;
 }
-
 
 body
 {
@@ -54,13 +54,10 @@ input[type="password"]
     font-size: 14px;
 }
 
-
  input::placeholder
 {
     color:black;
 }
-
-
 
 .container .remember-forgot
 {

@@ -12,19 +12,19 @@
         <h1>Payment</h1>
         <form class="inputs">
 
-                <label for="cardName">Cardholder's Name</label>
+                <label>Cardholder's Name</label>
                 <input type="text" id="cardName" placeholder="Enter cardholder's name" required>
            
-                <label for="cardNumber">Card Number</label>
+                <label>Card Number</label>
                 <input type="text" id="cardNumber" placeholder="Enter card number" required>
             
-                <label for="expiryDate">Expiry Date</label>
+                <label>Expiry Date</label>
                 <input type="text" id="expiryDate" placeholder="MM/YY" required>
             
-                <label for="cvv">CVV</label>
+                <label>CVV</label>
                 <input type="text" id="cvv" placeholder="Enter cvv"required>
             
-                <label for="amount">Amount (Rs.)</label>
+                <label>Amount (Rs.)</label>
                 <input type="number" id="amount" placeholder="Enter amount" required>
             
                 <button type="submit">Pay Now</button>
