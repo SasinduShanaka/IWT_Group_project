@@ -16,7 +16,7 @@ body {
 .heading{
     height: 350px;
     width: 100%;
-    background-image:url('images/Products.JPEG');
+    background-image:url('../images/Products.JPEG');
     background-size: contain;
     background-position:top;
     background-repeat: no-repeat;
