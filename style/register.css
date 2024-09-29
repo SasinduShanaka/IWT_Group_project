@@ -1,4 +1,5 @@
-header {
+header 
+{
     font-family: poppins;
     font-size: 40px;
     font-weight: 500;
@@ -14,45 +15,51 @@ header {
     font-family:'poppins';
 }
 
-body
+body 
 {
-    min-height: 100vh;
-    display:flex;
-    align-items: center;
+    background-color: #f4f4f4;
+    display: flex;
     justify-content: center;
-    background-color : white;
-
+    align-items: center;
 }
 
-.container
+.container 
 {
-    width:420px;
+    background-color: #fff;
+    padding: 20px;
     border-radius: 10px;
-    padding:30px;
-    color:black;
-    background-color: white;
-    border:groove;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin: 30px;  
 }
 
-.fields .policy
+label 
 {
-    display:flex;
-    justify-content: space-between;
-    font-size:14.5px;
-    margin:-15px 0 15px;
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin: 30px;
 }
 
-.policy lable input
+input[type="text"],
+input[type="numbers"],
+input[type="tel"],
+input[type="email"],
+input[type="password"]
 {
-    accent-color: black;
-    margin-right: 10px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-.fields .register-link
+#chk , .register-link
 {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .register-link p a 
@@ -73,62 +80,19 @@ body
     color: blue;
 }
 
-.container form .fields
+#sbtbtn 
 {
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-form .fields .input-field
-{
-    display:flex;
-    width:calc(100% / 1 - 15px);
-    flex-direction: column;
-    margin:-10px 0;
-}
-
-.input-field label
-{
-    font-size: 12px;
-    font-weight: 500;
-
-}
-
-.input-field input
-{
-    width:350px;
-    height:40px;
-    background:transparent;
-    border:solid;
-    outline:none;
-    border : 2px solid gray(255,255,255, .2);
-    border-radius: 40px;
+    width: 100%;
+    padding: 10px;
+    background-color: #03496c;
+    border: none;
+    border-radius: 30px;
+    color: white;
     font-size: 16px;
-    color:black;
-    padding:20px 45px 20px 20px;
+    cursor: pointer;
 }
 
-
-
-#sbtbtn
+#sbtbtn:hover 
 {
-    width:100%;
-    height:45px;
-    background: #03496c;
-    border:none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px black(0, 0, 0, .1);
-    cursor:pointer;
-    font-size: 16px;
-    color:whitesmoke;
-    font-weight: 600;
-    text-align: center;
+    background-color: blue;
 }
-
-
-
-
-
-
