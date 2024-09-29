@@ -11,7 +11,7 @@
 
 <!-- form -->
 <div class="container " id="form-container">
-    <h2>New News</h2>
+    <h1>New News</h1>
 
 <form method="post" action="" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
    <div class="inputs">
