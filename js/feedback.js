@@ -1,14 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const stars = document.querySelectorAll(".star-rating .star");
-    const ratingInput = document.getElementById("rating");
+// Star Rating System
+const stars = document.querySelectorAll('.star');
+let ratingValue = 0;
 
-    stars.forEach(star => {
-        star.addEventListener("click", function() {
-            let ratingValue = this.getAttribute("data-value");
-            ratingInput.value = ratingValue; // Set the hidden input's value
-
-            stars.forEach(s => s.classList.remove("selected"));
-            this.classList.add("selected");
-        });
+stars.forEach(star => {
+    star.addEventListener('click', () => {
+        ratingValue = star.getAttribute('data-value');
+        stars.forEach(s => s.classList.remove('selected'));
+        star.classList.add('selected');
+        for (let i = 0; i < ratingValue; i++) {
+            stars[i].classList.add('selected');
+        }
     });
+});
+
+// Form Submission (for now, just preventing default action)
+const feedbackForm = document.getElementById('feedbackForm');
+feedbackForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Feedback submitted! Rating: ' + ratingValue);
 });

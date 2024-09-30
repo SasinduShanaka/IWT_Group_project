@@ -1,10 +1,54 @@
+<?php
+// Include the database configuration file
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "IWT_group_project";
+
+// Create connection
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+session_start();
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture form data
+    $name = mysqli_real_escape_string($connection, $_POST["name"]);
+    $occupation = mysqli_real_escape_string($connection, $_POST["occupation"]);
+    $message = mysqli_real_escape_string($connection, $_POST["message"]);
+    $rating = (int)$_POST["rating"];
+    
+    // Insert data into the database
+    $sql = "INSERT INTO feedback (name, occupation, message, rating) 
+            VALUES ('$name', '$occupation', '$message', $rating)";
+    
+    if (mysqli_query($connection, $sql)) {
+        echo "New feedback added successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    }
+}
+
+// Fetch feedback to display in the table
+$sql = "SELECT name, occupation, message, rating FROM feedback";
+$result = mysqli_query($connection, $sql);
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
-    <link rel="stylesheet" href="styles/Feedback.css">
+    <link rel="stylesheet" href="style/Feedback.css">
 </head>
 <body>
 
