@@ -18,7 +18,7 @@ session_start();
 $connection = mysqli_connect($hostname,$username,$password,$database);
 
 // Fetching data for update
-if (isset($_GET['update_id'])) 
+if (isset($_GET['update_policy'])) 
 {
     $id = $_GET['update_id'];
     $query = "SELECT * FROM policy WHERE policy_id='$id'";
@@ -119,9 +119,9 @@ if (isset($_POST['update_policy']))
 }
 ?>
 
-<!-- Form to Add or Edit policy -->
+<!-- Form to Add or Update policy -->
 <div class="container" id="form-container">
-    <h2><?php echo isset($policy_id) ? 'Edit policy' : 'New policy'; ?></h2>
+    <h2><?php echo isset($policy_id) ? 'update policy' : 'New policy'; ?></h2>
     <form method="post" action="">
         <div class="inputs">
             
@@ -179,7 +179,7 @@ if (isset($_POST['update_policy']))
                     <td><?php echo $row['effective_date']; ?></td>
                     <td><?php echo $row['expiration_date']; ?></td>
                     <td>
-                        <a class='button' id='btn1' href='manage_policy.php?edit_id=<?php echo $row['policy_id']; ?>'>Update</a>
+                        <a class='button' id='btn1' href='manage_policy.php?update_id=<?php echo $row['policy_id']; ?>'>Update</a>
                         <a class='button' id='btn2' href='manage_policy.php?delete_id=<?php echo $row['policy_id']; ?>' onclick="return confirm('Are you sure you want to delete this policy?');">Delete</a>
                     </td>
                 </tr>
