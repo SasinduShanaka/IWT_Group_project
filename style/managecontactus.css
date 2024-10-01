@@ -1,0 +1,85 @@
+/* form css */
+
+*{
+    font-family: poppins ;
+    color: rgb(10, 78, 109);
+  }
+
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+  
+    h2 {
+        font-size: 20px; /* Decrease font size for headings */
+    }
+  
+    input[type="password"],
+    input[type="submit"] {
+        font-size: 14px; /* Adjust font size for input fields */
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  /* table css */
+  
+  body{
+      background-color: #ebebeb98;  
+      font-family: poppins;
+  
+  }
+  
+  
+  .table {
+      font-family: poppins;
+      border-collapse: collapse;
+      width: 80%;
+     margin-left: auto;
+     margin-right: auto;
+     border: 4px solid rgb(10, 78, 109);
+    }
+    
+  
+  #table-container{
+    margin-bottom: 0px;
+    width: 100%;
+    
+  }
+  
+    .table td, th {
+      border: 1px solid #e5e9eb;
+      padding: 8px;
+      height: 30px;
+  
+    }
+    
+  
+    .table tr:nth-child(even){background-color: #f2f2f2;}
+    
+    .table tr:hover {background-color: #ddd;}
+    
+    .table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: rgb(10, 78, 109);;
+      color: white;
+    }
+    
