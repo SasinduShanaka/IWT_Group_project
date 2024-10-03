@@ -45,7 +45,7 @@ $result = mysqli_query($connection, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Contact Requests</title>
-    <link rel="stylesheet" href="style/managecontacts.css">
+    <link rel="stylesheet" href="style/managecontactus.css">
 </head>
 <body>
 
