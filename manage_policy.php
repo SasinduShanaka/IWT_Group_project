@@ -17,7 +17,7 @@
 session_start();
 $connection = mysqli_connect($hostname,$username,$password,$database);
 
-// Fetching data for update
+// Fetching data for edit
 if (isset($_GET['update_policy'])) 
 {
     $id = $_GET['update_id'];
