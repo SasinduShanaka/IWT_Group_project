@@ -9,36 +9,54 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        
-            <button class="btn">Introduction</button>
-            <p>This privacy policy outlines how Life Insurancecollects, uses, and protects your personal information when you see our website or sevices.</p>
-            
-            <button class="btn">Information We Collect</button>
-            <p>We may collect personal information such as your name, email address, and payment details, as well as non-personal information like your IP address and browser type.</p>
-        
-            <button class="btn">How We Use Your Information</button>
-            <p>Your information is used to improve our services, process transactions, and send periodic emails. We do not sell your data to third parties.</p>
+        <?php
+            $hostname = "localhost";
+            $username = "root";
+            $password = "";
+            $database = "IWT_Group_project";
 
-            <button class="btn">Information Sharing and Disclosure</button>
-            <p>We do not sell, trade, or otherwise your personal information to third parties without your consent, expect as described in this privacy policy. We may share your information in the following situations
-                <ul>
-                    <li>With trusted third-party service providers to perform functions on our behalf</li>
-                    <li>To comply with legal obligations or project against potential fraud</li>
-                    <li>In the event of a merger, acquisition, or sale of all  or a portion of our assets</li>
-                </ul>
-            </p>
-            
-            <button class="btn">Security</button>
-                <p>We take appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction, However, please note that no method of transmission over the internet or electronic storage 100% secure.</p>
-            
-            <button class="btn">Contact Us</button>
-                <p>If you have any questions about our privacy policy,please contact us<br><br>
-                <i>Lifegaurd Insurance,<br>
-                123 park street,<br>
-                City state 1234<br>
-                Phone:0123456789<br>   
-                Email:lifegaurdassurance@gmail.com.</i></p>
-            
+            session_start();
+            $connection = mysqli_connect($hostname, $username, $password, $database);
+
+            // Assign variables
+            $name = '';
+            $description = '';
+            $effectivedate = '';
+            $expirationdate = '';
+
+            // query
+            $query = "SELECT * FROM policy WHERE policy_description IS NOT NULL";
+            $query_run = mysqli_query($connection, $query);
+
+            // Check if the query execute successfully
+            if ($query_run) 
+            {
+                 if (mysqli_num_rows($query_run) > 0)
+                {
+                     while ($row = mysqli_fetch_assoc($query_run)) 
+                     {
+                         $name = $row['policy_name']; //fetching details
+                         $description = $row['policy_description'];
+
+                        //display details
+                         echo "<button>$name</button> 
+                               <p>$description</p>";
+                     }
+                } 
+                else 
+                {
+                  echo "No policies found.";
+                }
+            } 
+            else 
+            {
+                 echo "Error: " . mysqli_error($connection);
+            }
+
+        // Close the connection
+        $connection->close();
+        ?>
+      
     </div>
 
 </body>

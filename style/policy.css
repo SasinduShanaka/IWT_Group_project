@@ -28,7 +28,7 @@ p
     color: #555;
 }
 
-.btn 
+button
 {
     background-color: #03496c;
     color: white;
@@ -42,7 +42,7 @@ p
     border-radius: 5px;
 }
 
-.btn:hover 
+button:hover 
 {
     background-color: #03496c;
 }
