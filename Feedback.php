@@ -15,28 +15,27 @@ if (!$connection) {
 
 session_start();
 
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit'])) {
+    
     // Capture form data
-    $name = mysqli_real_escape_string($connection, $_POST["name"]);
-    $occupation = mysqli_real_escape_string($connection, $_POST["occupation"]);
-    $message = mysqli_real_escape_string($connection, $_POST["message"]);
+    $name = $_POST["name"];
+    $occupation = $_POST["occupation"];
+    $message = $_POST["message"];
     $rating = (int)$_POST["rating"];
+
+    // Debugging step
+    //echo "Captured data: Name - $name, Occupation - $occupation, Message - $message, Rating - $rating";
     
     // Insert data into the database
     $sql = "INSERT INTO feedback (name, occupation, message, rating) 
             VALUES ('$name', '$occupation', '$message', $rating)";
     
     if (mysqli_query($connection, $sql)) {
-        echo "New feedback added successfully";
+        //echo "New feedback added successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
 }
-
-// Fetch feedback to display in the table
-$sql = "SELECT name, occupation, message, rating FROM feedback";
-$result = mysqli_query($connection, $sql);
 ?>
 
 
@@ -52,9 +51,12 @@ $result = mysqli_query($connection, $sql);
 </head>
 <body>
 
+
     <div class="feedback-container">
 
-    <form id="feedbackForm" action="submit_feedback.php" method="POST">
+    <h2>Feedback Form</h2>
+
+    <form action="" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Your Name" required>
     
@@ -74,7 +76,7 @@ $result = mysqli_query($connection, $sql);
         <span class="star" data-value="5">★</span>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" name="submit">Submit</button>
 </form>
 
 </div>

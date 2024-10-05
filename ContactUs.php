@@ -1,3 +1,42 @@
+<?php
+// Include the database configuration file
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "IWT_group_project";
+
+// Create connection
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+session_start();
+
+if (isset($_POST['submit'])) {
+    
+    // Capture form data
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $message = $_POST["message"];
+    
+    // Insert data into the database
+    $sql = "INSERT INTO contactus(name, email, phone, message) 
+            VALUES ('$name', '$email', '$phone', '$message')";
+    
+    if (mysqli_query($connection, $sql)) {
+        echo "Message sent successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    }
+}
+
+mysqli_close($connection);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,7 +95,7 @@
 
         <div class="contact-form">
          
-          <form action="ContactUs.php" autocomplete="off">
+          <form action="" method="post">
             
             <h3 class="title">Contact us</h3>
             <div class="input-container">
@@ -83,8 +122,8 @@
               <span>Message</span>
             </div>
 
-            <input type="submit" value="Send" class="btn" />
-         
+            <input type="submit" value="Send" class="btn" name = "submit"/>
+      
         </form>
         
     </div>

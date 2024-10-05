@@ -1,98 +1,165 @@
+<?php
+   
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "IWT_group_project";
+   
+   // Create connection
+   $conn = mysqli_connect("localhost", "root", "", "IWT_group_project");
+   
+   // Check connection
+   if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
+    
+
+    // Check if in edit mode
+    if (isset($_GET['edit_id'])) {
+        $id = $_GET['edit_id'];
+        
+        // Fetch the admin details based on the edit_id
+        $sql = "SELECT * FROM news WHERE id = '$id'";
+        $result = mysqli_query($conn, $sql);
+        
+        // Fetch the row
+        if ($row = mysqli_fetch_assoc($result)) {
+
+            $id = $row['id'];
+            $title = $row['title'];
+            $content = $row['content'];
+            $image = $row['image'];
+
+        }
+    }
+
+    // Handle form submission
+    if (isset($_POST['update'])) {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $image = $_POST['image'];
+
+        $file_name = $_FILES['image']['name'];
+        $tempname = $_FILES['image']['tmp_name'];
+        $folder = 'newsImages/'. $file_name;
+
+$query = "UPDATE news set image = '$file_name' WHERE id = '$id'";
+
+$result1 = mysqli_query($conn , $query);
+
+move_uploaded_file($tempname , $folder);
+        
+
+        // Update query
+        $sql = "UPDATE news SET  title = '$title' , content = '$content' , image = '$image' WHERE id = '$id'";
+        
+        if (mysqli_query($conn, $sql)) {
+            header('Location: managenews.php?errdone'); 
+        } 
+        else {
+            header('Location: managenews.php?erroesomething-went-wrong'); 
+        }
+    }
+
+    // Delete admin data
+if (isset($_GET['delete_id'])) {
+    $id = $_GET['delete_id'];
+    $sql = "DELETE FROM news WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account deleted";
+        header('Location: managenews.php');
+    } else {
+        $_SESSION['status'] = "Cannot delete the admin account";
+        header('Location: managenews.php');
+}
+}
+
+// Adding admin data
+if (isset($_POST['add'])) {
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $file_name = $_FILES['image']['name'];
+    $tempname = $_FILES['image']['tmp_name'];
+    $folder = 'newsImages/'. $file_name;
+
+    $query = "INSERT INTO news(id, title, content , image) VALUES ('$id', '$title', '$content' , '$file_name')";
+    $query_run = mysqli_query($conn, $query);
+    move_uploaded_file($tempname , $folder);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account added";
+        header('Location: managenews.php');
+    } else {
+        $_SESSION['status'] = "Cannot add the admin account";
+        header('Location: managenews.php');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of News</title>
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style/managenews.css">
+    <link rel="stylesheet" href="style\managenews.css">
+    <title>Manage News</title>
 </head>
 <body>
 
-<!-- form -->
-<div class="container " id="form-container">
-    <h2>New News</h>
+<!-- Form to Add or Edit Admin -->
+<div class="container" id="form-container">
+    <h2>Enter News</h2>
+    <form method="post" action="">
+        <div class="inputs">
+            <label for="New_news">Enter News ID</label><br>
+            <input type="text" name="id" id="ID" value="<?php echo isset($id) ? $id : '';?>" required><br><br>
 
-<form method="post" action="" enctype="multipart/form-data"> <!-- Added enctype for file upload -->
-   <div class="inputs">
-     <label for="news_id">Enter News ID</label><br>
-     <input type="text" name="n_id" id="id" required ><br>
-     <label for="title">Enter Title</label><br>
-     <input type="text" name="title" id="Ntitle" required><br>
-     <label for="Content">Enter Content</label><br>
-     <input type="text" name="content" id="content" required><br> <!-- Changed input name to content -->
-     <label for="upload_image">Upload Image</label><br>
-     <input type="file" name="image" id="imageUpload" accept="image/*" required><br>
+            <label for="New_news">Enter Title</label><br>
+            <input type="text" name="title" id="ID"  value="<?php echo isset($title) ? $title : ''; ?>" required><br><br>
 
-     <button type="submit" name="add_News" class="button" id="btn">Add new News</button>
-   </div> 
- </form>
+            <label for="New_news">Content</label><br>
+            <input type="text" name="content" id="ID"  value="<?php echo isset($content) ? $content : ''; ?>" required><br><br>
 
-<!-- PHP code for adding news to the database -->
-<?php
-session_start();
-$connection = mysqli_connect("localhost", "root", "", "IWT_group_project");
+            <label for="imageUpload">Choose an image:</label><br>
+        <input type="file" id="imageUpload" name="image">
 
-if (isset($_POST['add_News'])) {
-    $news_id = $_POST['n_id'];
-    $title = $_POST['title'];
-    $content = $_POST['content']; // Use the correct content field
-    $file_name = $_FILES['image']['name'];
-    $tempname = $_FILES['image']['temp_name'];
-    $folder = 'newsImages'. $file_name;
 
-    require_once 'managenews.php';
-
-    
-
-   
-
-            if ($query_run) {
-                echo "News added successfully!";
-                $_SESSION['success'] = "News added successfully!";
-                header('Location: managenews.php');
-            } else {
-                echo "Error adding news!";
-                $_SESSION['status'] = "Failed to add news!";
-                header('Location: managenews.php');
-            }
-        } else {
-            echo "Error uploading the image!";
-            $_SESSION['status'] = "Error uploading the image!";
-        }
-
-?>
-
+            <?php if (isset($id)) { ?>
+                <button type="submit" name="update" class="button" id="btn">Update</button>
+            <?php } else { ?>
+                <button type="submit" name="add" class="button" id="btn">Add New News</button>
+            <?php } ?>
+            
+        </div>
+    </form>
 </div>
 
-<br>
 
-<!-- table -->
-<div class="container " id="table-container">
-    <h2>List of News</h2>
+
+    <!-- Admin Table -->
+    <div class="container" id="table-container">
+    <h2>List of Users</h2>
     <br>
-    
-    <?php
-    // Connect to the database and fetch the news records
-    $connection = mysqli_connect("localhost", "root", "", "IWT_group_project");
-    $query = "SELECT * FROM news"; // Assuming your table is named 'news'
-    $query_run = mysqli_query($connection, $query);
-    ?>
-               
+    <!-- Fetch and Display List of Admins -->
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>Action</th>
+                <th>TITLE</th>
+                <th>CONTENT</th>
+                <th>IMAGE</th>
+                <th>ACTIONS</th>
             </tr>
-        </thead>
-
+        </thead> 
         <tbody>
-        <!-- Extracting data from the database -->
-        <?php 
+        <?php
+        $query = "SELECT * FROM news";
+        $query_run = mysqli_query($conn, $query);
+
         if (mysqli_num_rows($query_run) > 0) {
             while ($row = mysqli_fetch_assoc($query_run)) {
                 ?>
@@ -100,19 +167,16 @@ if (isset($_POST['add_News'])) {
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['content']; ?></td>
-                    <td><img src="uploads/<?php echo $row['image']; ?>" alt="News Image" width="100"></td> <!-- Display the image -->
+                    <td><?php echo $row['image']; ?></td>
                     <td>
-                        <form action="" method="post">
-                            <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
-                            <a class='button' id='btn1' href='edit_news.php?id=<?php echo $row['id']; ?>'>Edit</a>
-                        </form>
-                        <a class='button' id='btn2' href='delete_news.php?id=<?php echo $row['id']; ?>'>Delete</a>
+                        <a class='button' id='btn1' href='managenews.php?edit_id=<?php echo $row['id']; ?>'>Edit</a>
+                        <a class='button' id='btn2' href='managenews.php?delete_id=<?php echo $row['id']; ?>' onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
                     </td>
                 </tr>
                 <?php
             }
         } else {
-            echo "<tr><td colspan='5'>No record found</td></tr>";
+            echo "<tr><td colspan='8'>No record found</td></tr>";
         }
         ?>
         </tbody>

@@ -1,42 +1,38 @@
 <?php
-// Include the database configuration file
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "IWT_group_project";
-
-// Create connection  
-$connection = mysqli_connect("localhost", "root", "", "IWT_group_project");
-
-// Check connection
-if (!$connection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-session_start();
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Capture form data
-    $name = mysqli_real_escape_string($connection, $_POST["name"]);
-    $email = mysqli_real_escape_string($connection, $_POST["email"]);
-    $phone = mysqli_real_escape_string($connection, $_POST["phone"]);
-    $message = mysqli_real_escape_string($connection, $_POST["message"]);
+   
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "IWT_group_project";
+   
+   // Create connection
+   $conn = mysqli_connect("localhost", "root", "", "IWT_group_project");
+   
+   // Check connection
+   if (!$conn) {
+       die("Connection failed: " . mysqli_connect_error());
+   }
     
-    // Insert data into the database
-    $sql = "INSERT INTO contact_us (name, email, phone, message) 
-            VALUES ('$name', '$email', '$phone', '$message')";
+
     
-    if (mysqli_query($connection, $sql)) {
-        echo "New contact request added successfully";
+    
+
+    // Delete contactus data
+if (isset($_GET['delete_cid'])) {
+    $id = $_GET['delete_cid'];
+    $sql = "DELETE FROM contactus WHERE cid='$id'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Admin account deleted";
+        header('Location: managecontactus.php');
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-    }
+        $_SESSION['status'] = "Cannot delete the admin account";
+        header('Location: managecontactus.php');
+}
 }
 
-// Fetch contact us data to display in the table
-$sql = "SELECT cid, name, email, phone, message FROM contactus";
-$result = mysqli_query($connection, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -44,44 +40,54 @@ $result = mysqli_query($connection, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Contact Requests</title>
-    <link rel="stylesheet" href="style/managecontactus.css">
+    <link rel="stylesheet" href="style\managenews.css">
+    <title>Manage News</title>
 </head>
 <body>
 
-<div class="contact-table-container">
-    <h2>Manage Contact Requests</h2>
 
-    <table border="1" cellspacing="0" cellpadding="10">
+ <!-- Contactus Table -->
+    <div class="container" id="table-container">
+    <h2>List of Users</h2>
+    <br>
+
+    <table class="table">
         <thead>
             <tr>
-                <th>Contact ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Message</th>
+                <th>CID</th>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>MESSAGE</th>
+                <th>ACTION</th>
             </tr>
-        </thead>
+        </thead> 
         <tbody>
-            <?php if (mysqli_num_rows($result) > 0): ?>
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row["cid"]); ?></td>
-                        <td><?php echo htmlspecialchars($row["name"]); ?></td>
-                        <td><?php echo htmlspecialchars($row["email"]); ?></td>
-                        <td><?php echo htmlspecialchars($row["phone"]); ?></td>
-                        <td><?php echo htmlspecialchars($row["message"]); ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
+        <?php
+        $query = "SELECT * FROM contactus";
+        $query_run = mysqli_query($conn, $query);
+
+        if (mysqli_num_rows($query_run) > 0) {
+            while ($row = mysqli_fetch_assoc($query_run)) {
+                ?>
                 <tr>
-                    <td colspan="5">No contact requests available yet.</td>
+                    <td><?php echo $row['cid']; ?></td>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td><?php echo $row['message']; ?></td>
+                    <td>
+                        <a class='button' id='btn2' href='managecontactus.php?delete_cid=<?php echo $row['cid']; ?>' onclick="return confirm('Are you sure you want to delete this feedback?');">Delete</a>
+                    </td>
                 </tr>
-            <?php endif; ?>
+                <?php
+            }
+        } else {
+            echo "<tr><td colspan='8'>No record found</td></tr>";
+        }
+        ?>
         </tbody>
     </table>
-
-    <?php mysqli_close($connection); ?>
 </div>
 
 </body>

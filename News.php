@@ -1,3 +1,44 @@
+<?php
+// Include the database configuration file
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "IWT_group_project";
+
+// Create connection  
+$connection = mysqli_connect("localhost", "root", "", "IWT_group_project");
+
+// Check connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+session_start();
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture form data
+    $name =  $_POST["name"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $message = $_POST["message"];
+    
+    // Insert data into the database
+    $sql = "INSERT INTO contact_us (name, email, phone, message) 
+            VALUES ('$name', '$email', '$phone', '$message')";
+    
+    if (mysqli_query($connection, $sql)) {
+        echo "New contact request added successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    }
+}
+
+// Fetch contact us data to display in the table
+$sql = "SELECT cid, name, email, phone, message FROM contactus";
+$result = mysqli_query($connection, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
