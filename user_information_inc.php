@@ -31,6 +31,7 @@ move_uploaded_file($tempname , $folder);
 
     if(!$result){
         die("querry failed");//getting errors
+        echo "alert('Not working!!')";
     }
     else{
         //again filling the details of the form with the new data entered
@@ -48,13 +49,22 @@ move_uploaded_file($tempname , $folder);
             $_SESSION['lastName'] = $row['lastName'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['address'] = $row['address'];
-            $_SESSION['phone'] = $row['mobileNo'];
+            $_SESSION['mobile'] = $row['mobileNo'];
+            $_SESSION['password'] =$row['password'];
             $_SESSION['file'] = $row['file'];
+
+            echo 'alert("Saved changes successfully");';
             
-            header('location:home.php');//redirecting to the site
+            header('location:user_dashboard.php');//redirecting to the site
         }
             
         }
+}
+
+if(isset($_POST['delete'])){
+    $sql = "DELETE FROM users WHERE username='{$_SESSION['username']}'";
+    $result = mysqli_query($conn, $sql);
+    header('location:loginpage.php');//redirecting to the site
 }
 
 

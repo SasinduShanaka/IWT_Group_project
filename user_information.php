@@ -8,7 +8,11 @@
 
     <title>Document</title>
     <link rel="stylesheet" href="./style/user_information.css">
-    <script >
+   
+</head>
+<body>
+
+<script >
     
     function direct_changePW(){
          window.location.href="change_password.php";
@@ -17,8 +21,7 @@
         window.location.href="user_dashboard.php";
     }    
     </script>  
-</head>
-<body>
+
     <div class="topbar">
         <button id="btn1" onclick="back()">Back</button>
     </div>
@@ -32,7 +35,7 @@
         <form action="user_information_inc.php" method="post" enctype="multipart/form-data">
 
         <label for="username">Username:</label><br>
-        <input type="text" id="user_name" name="username" value="<?php echo $_SESSION['username'];?>"><img src="./images/edit_icon.png" alt=""><br>
+        <input type="text" id="user_name" name="username" value="<?php echo $_SESSION['username'];?>" readonly alt=""><br>
         <label for="firstname">Firstname:</label><br>
         <input type="text" id="first_name" name="firstName" value="<?php echo $_SESSION['firstName'];?>"><img src="./images/edit_icon.png" alt=""><br>
         <label for="lastname">Lastname:</label><br>
@@ -56,9 +59,12 @@
         <input type="file" id="imageUpload" name="image">
         <br><br>
     <img src="./images/change_password.png" alt=""><br>
-    <button id="btn1" onclick="direct_changePW()">Change Password</button><br>
+    <button id="btn1" type="button" onclick="direct_changePW()">Change Password</button><br>
     <img src="./images/delete_account.png" alt=""><br>
-    <button id="btn2">Delete Account</button><br>
+
+    <form action="user_information_inc.php" method="post" >
+    <button id="btn2" name="delete">Delete Account</button><br>
+    </form>
     </div>
 
     </div>

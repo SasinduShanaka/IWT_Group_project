@@ -4,6 +4,7 @@ session_start();
 require_once "IWT_db.php";
 
 if (isset($_POST["submit"])) {
+    
     $username = $_POST['Uname'];
     $firstname = $_POST['Fname'];
     $lastname = $_POST['Lname'];

@@ -19,18 +19,18 @@
 
   <img src="./images/user_icon.png" alt="user">
    
-  <form action="" method="post">
+  <form action="change_password_inc.php" method="post">
    
     <div class="inputs">
      
       <label for="current_password">Enter current password</label><br>
-      <input type="password" id="current" required><br>
+      <input type="password" id="current" name="password" required><br>
       <label for="new_password">Enter new password</label><br>
-      <input type="password" id="new" required><br>
+      <input type="password" id="new" name="newpwd" required><br>
       <label for="re_enter_password">Re-Enter password</label><br>
-      <input type="password" id="re" required><br>
+      <input type="password" id="re" name="repwd" required><br>
 
-      <input type="submit" id="submit" value="Confirm">
+      <input type="submit" name="confirm" id="submit" value="Confirm">
 
 
     </div> 
