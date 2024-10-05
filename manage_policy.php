@@ -14,127 +14,105 @@
     $username = "root";
     $password = "";
     $database = "IWT_Group_project";
-session_start();
-$connection = mysqli_connect($hostname,$username,$password,$database);
 
-// Fetching data for edit
-if (isset($_GET['update_policy'])) 
-{
-    $id = $_GET['update_id'];
-    $query = "SELECT * FROM policy WHERE policy_id='$id'";
-    $query_run = mysqli_query($connection, $query);
+    session_start();
+    $connection = mysqli_connect($hostname, $username, $password, $database);
 
-    if ($row = mysqli_fetch_assoc($query_run)) 
-    {
-        $policy_id = $row['policy_id'];
-        $policy_name = $row['policy_name'];
-        $policy_description = $row['policy_description'];
-        $effective_date = $row['effective_date'];
-        $expiration_date = $row['expiration_date'];
+    // Assign variables
+    $name = '';
+    $description = '';
+    $effectivedate = '';
+    $expirationdate = '';
+
+    // Fetching data for edit
+    if (isset($_GET['update_id'])) {
+        $id = $_GET['update_id'];
+
+        $query = "SELECT * FROM policy WHERE policy_id='$id'";
+        $query_run = mysqli_query($connection, $query);
+
+        if ($query_run && mysqli_num_rows($query_run) > 0) {
+            $row = mysqli_fetch_assoc($query_run);
+
+            $name = $row['policy_name'];
+            $description = $row['policy_description'];
+            $effectivedate = $row['effective_date'];
+            $expirationdate = $row['expiration_date'];
+        }
     }
-}
 
+    // Delete policy 
+    if (isset($_GET['delete_id'])) {
+        $id = $_GET['delete_id'];
+        $query = "DELETE FROM policy WHERE policy_id='$id'";
+        $query_run = mysqli_query($connection, $query);
 
-/*function updatePolicy(policyID) 
-{
-    const policyRow = document.getElementById(`policy-${policyID}`);
-    document.getElementById("PolicyID").value = policyID;
-    document.getElementById("PkgID").value = policyRow.querySelector('.PkgID').textContent;
-    document.getElementById("Policytype").value = policyRow.querySelector('.Policytype').textContent;
-    document.getElementById("Policystatus").value = policyRow.querySelector('.Policystatus').textContent;
-    document.getElementById("EffectiveDate").value = policyRow.querySelector('.EffectiveDate').textContent;
-    document.getElementById("ExpirationDate").value = policyRow.querySelector('.ExpirationDate').textContent;
-}*/
-
-
-
-
-
-
-// Delete policy logic
-if (isset($_GET['delete_id'])) 
-{
-    $id = $_GET['delete_id'];
-    $query = "DELETE FROM policy WHERE policy_id='$id'";
-    $query_run = mysqli_query($connection, $query);
-
-    if ($query_run) 
-    {
-        $_SESSION['success'] = "policy is deleted";
-        header('Location: manage_policy.php');
-    } 
-    else 
-    {
-        $_SESSION['status'] = "Cannot delete the policy";
-        header('Location: manage_policy.php');
+        if ($query_run) {
+            $_SESSION['success'] = "Policy is deleted";
+            header('Location: manage_policy.php');
+        } else {
+            $_SESSION['status'] = "Cannot delete the policy";
+            header('Location: manage_policy.php');
+        }
     }
-}
 
-// Adding policy data
-if (isset($_POST['add_policy'])) 
-{
-    $id = $_POST['policy_id'];
-    $name = $_POST['policy_name'];
-    $description = $_POST['policy_description'];
-    $effectivedate = $_POST['effective_date'];
-    $expirationdate = $_POST['expiration_date'];
+    // Adding policy data
+    if (isset($_POST['add_policy'])) {
+        $name = $_POST['policy_name'];
+        $description = $_POST['policy_description'];
+        $effectivedate = $_POST['effective_date'];
+        $expirationdate = $_POST['expiration_date'];
 
-    $query = "INSERT INTO policy( policy_name, policy_description, effective_date, expiration_date) VALUES ( '$name', '$description', '$effectivedate', '$expirationdate')";
-    $query_run = mysqli_query($connection, $query);
+        $query = "INSERT INTO policy (policy_name, policy_description, effective_date, expiration_date) VALUES ('$name', '$description', '$effectivedate', '$expirationdate')";
+        $query_run = mysqli_query($connection, $query);
 
-    if ($query_run) 
-    {
-        $_SESSION['success'] = "Policy added";
-        header('Location: manage_policy.php');
-    } 
-    else 
-    {
-        $_SESSION['status'] = "Cannot add the policy";
-        header('Location: manage_policy.php');
+        if ($query_run) {
+            $_SESSION['success'] = "Policy added";
+            header('Location: manage_policy.php');
+        } else {
+            $_SESSION['status'] = "Cannot add the policy";
+            header('Location: manage_policy.php');
+        }
     }
-}
 
-// Updating policy data
-if (isset($_POST['update_policy'])) 
-{
-    $id = $_POST['policy_id'];
-    $name = $_POST['policy_name'];
-    $description = $_POST['policy_description'];
-    $effectivedate = $_POST['effective_date'];
-    $expirationdate = $_POST['expiration_date'];
+    // Updating policy data
+    if (isset($_POST['update_policy'])) {
+        $id = $_POST['policy_id'];
+        $name = $_POST['policy_name'];
+        $description = $_POST['policy_description'];
+        $effectivedate = $_POST['effective_date'];
+        $expirationdate = $_POST['expiration_date'];
 
-    $query = "UPDATE policy SET name='$name', description='$description', effectivedate='$effectivedate', expirationdate='$expirationdate' WHERE id='$id'";
-    $query_run = mysqli_query($connection, $query);
+        $query = "UPDATE policy SET policy_name='$name', policy_description='$description', effective_date='$effectivedate', expiration_date='$expirationdate' WHERE policy_id='$id'";
+        $query_run = mysqli_query($connection, $query);
 
-    if ($query_run) 
-    {
-        $_SESSION['success'] = "Policy updated";
-        header('Location: manage_policy.php');
-    } 
-    else 
-    {
-        $_SESSION['status'] = "Cannot update the policy";
-        header('Location: manage_policy.php');
+        if ($query_run && mysqli_affected_rows($connection) > 0) {
+            $_SESSION['success'] = "Policy updated";
+            header('Location: manage_policy.php');
+        } else {
+            $_SESSION['status'] = "Cannot update the policy";
+            header('Location: manage_policy.php');
+        }
     }
-}
 ?>
+
 
 <!-- Form to Add or Update policy -->
 <div class="container" id="form-container">
-    <h2><?php echo isset($policy_id) ? 'update policy' : 'New policy'; ?></h2>
-    <form method="post" action="">
+    <h2><?php echo isset($_GET['update_id']) ? 'Update Policy' : 'New Policy'; ?></h2>
+    <form method="post" action="manage_policy.php">
+        <input type="hidden" name="policy_id" value="<?php echo isset($id) ? $id : ''; ?>">
         <div class="inputs">
-            
-            <label for="policy_name">Enter Policy Name</label><br>
-            <input type="text" name="policy_name" id="name" value="<?php echo isset($policy_name) ? $policy_name : ''; ?>" required><br>
-            <label for="policy_description">Enter Policy Description</label><br>
-            <input type="text" name="policy_description" id="description" value="<?php echo isset($policy_description) ? $policy_description : ''; ?>" required><br>
-            <label for="effective_date">Enter Effective Date</label><br>
-            <input type="date" name="effective_date" id="effective_date" value="<?php echo isset($effective_date) ? $effective_date : ''; ?>" required><br>
-            <label for="expiration_date">Enter Expiration Date</label><br>
-            <input type="date" name="expiration_date" id="expiration_date" value="<?php echo isset($expiration_date) ? $expiration_date : ''; ?>" required><br>
+            <label>Enter Policy Name</label><br>
+            <input type="text" name="policy_name" id="name" value="<?php echo $name ?>" required><br>
+            <label>Enter Policy Description</label><br>
+            <input type="text" name="policy_description" id="description" value="<?php echo $description ?>" required><br>
+            <label>Enter Effective Date</label><br>
+            <input type="date" name="effective_date" id="effective_date" value="<?php echo $effectivedate ?>" required><br>
+            <label>Enter Expiration Date</label><br>
+            <input type="date" name="expiration_date" id="expiration_date" value="<?php echo $expirationdate ?>" required><br>
 
-            <?php if (isset($policy_id)) { ?>
+            <?php if (isset($_GET['update_id'])) { ?>
                 <button type="submit" name="update_policy" class="button" id="btn">Update Policy</button>
             <?php } else { ?>
                 <button type="submit" name="add_policy" class="button" id="btn">Add New Policy</button>
@@ -142,8 +120,6 @@ if (isset($_POST['update_policy']))
         </div>
     </form>
 </div>
-
-<br>
 
 <!-- policy Table -->
 <div class="container" id="table-container">
@@ -167,10 +143,8 @@ if (isset($_POST['update_policy']))
         </thead>
         <tbody>
         <?php
-        if (mysqli_num_rows($query_run) > 0) 
-        {
-            while ($row = mysqli_fetch_assoc($query_run)) 
-            {
+        if (mysqli_num_rows($query_run) > 0) {
+            while ($row = mysqli_fetch_assoc($query_run)) {
                 ?>
                 <tr>
                     <td><?php echo $row['policy_id']; ?></td>
@@ -178,9 +152,11 @@ if (isset($_POST['update_policy']))
                     <td><?php echo $row['policy_description']; ?></td>
                     <td><?php echo $row['effective_date']; ?></td>
                     <td><?php echo $row['expiration_date']; ?></td>
+
+
                     <td>
-                        <a class='button' id='btn1' href='manage_policy.php?update_id=<?php echo $row['policy_id']; ?>'>Update</a>
-                        <a class='button' id='btn2' href='manage_policy.php?delete_id=<?php echo $row['policy_id']; ?>' onclick="return confirm('Are you sure you want to delete this policy?');">Delete</a>
+                        <a class='button' id='btn1' name="update" href='manage_policy.php?update_id=<?php echo $row['policy_id']; ?>'>Update</a>
+                        <a class='button' id='btn2' name="delete" href='manage_policy.php?delete_id=<?php echo $row['policy_id']; ?>' onclick="return confirm('Are you sure you want to delete this policy?');">Delete</a>
                     </td>
                 </tr>
                 <?php
