@@ -17,7 +17,7 @@
     
         <div class="container">
 
-            <form action="loginpage_inc.php" method="post">
+   <form action="" method="post">
                 <h1>Login</h1>
                 
                 

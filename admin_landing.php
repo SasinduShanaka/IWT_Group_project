@@ -12,10 +12,11 @@
     <div class="fade-in-text" id="fadeText">
     <h1>Welcome to Admin Dashboard</h1>
     <p>Hello Praneesha !</p>
-    </div>
+  
 
-    <div>
-<button class="button" style="justify-content: center;"><span>Enter</span></button>
+<a href="manage_admins.php">
+<button  class="button" style="justify-content: center;"><span>Enter</span></button>
+</a>
    </div>
 
     <script src="./js/admin_landing.js"></script>

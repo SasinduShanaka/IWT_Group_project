@@ -27,7 +27,7 @@ if (isset($_GET['edit_id'])) {
     }
 }
 
-// Delete admin logic
+// Delete admin data
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
     $query = "DELETE FROM admin WHERE id='$id'";
