@@ -16,8 +16,11 @@
     <body>
     
         <div class="container">
-
-            <form action="loginpage_inc.php" method="post">
+<<<<<<< Updated upstream
+=======
+   
+            <form action="">
+>>>>>>> Stashed changes
                 <h1>Login</h1>
                 
                 
