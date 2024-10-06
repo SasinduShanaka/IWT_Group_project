@@ -45,6 +45,7 @@ mysqli_close($connection);
     <title>Contact Us</title>
     <link rel="stylesheet" href="style/ContantUs.css" />
     <script src="js/ContactUs.js" defer></script>
+
   </head>
   <body>
     <div class="container">
@@ -76,17 +77,20 @@ mysqli_close($connection);
 
             <div class="social-icons">
               <a href="#">
-                <i class="fab fa-facebook-f"></i>
-                <img src="images/facebook.png"  alt=""/>
+                <i class="facebook"></i>
+                <img src="images\facebook-icon.png"  alt=""/>
               </a>
               <a href="#">
-                <i class="fab fa-twitter"></i>
+                <i class="twitter"></i>
+                <img src="images\twitter.png"  alt=""/>
               </a>
               <a href="#">
-                <i class="fab fa-instagram"></i>
+                <i class="instagram"></i>
+                <img src="images\instagram.webp"  alt=""/>
               </a>
               <a href="#">
-                <i class="fab fa-linkedin-in"></i>
+                <i class="linkedin"></i>
+                <img src="images\linkedin-logo.png"  alt=""/>
               </a>
             </div>
           </div>
