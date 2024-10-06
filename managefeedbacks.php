@@ -17,7 +17,7 @@
     
     
 
-    // Delete admin data
+    // Delete Feedbacks
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
     $sql = "DELETE FROM feedback WHERE id='$id'";
@@ -40,13 +40,13 @@ if (isset($_GET['delete_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style\managenews.css">
-    <title>Manage News</title>
+    <link rel="stylesheet" href="style\managefeedbacks.css">
+    <title>Manage Feedbacks</title>
 </head>
 <body>
 
 
- <!-- Admin Table -->
+ <!-- Feedback Table -->
     <div class="container" id="table-container">
     <h2>List of Users</h2>
     <br>

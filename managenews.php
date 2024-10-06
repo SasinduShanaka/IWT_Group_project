@@ -18,7 +18,7 @@
     if (isset($_GET['edit_id'])) {
         $id = $_GET['edit_id'];
         
-        // Fetch the admin details based on the edit_id
+        // Fetch the news details based on the id
         $sql = "SELECT * FROM news WHERE id = '$id'";
         $result = mysqli_query($conn, $sql);
         
@@ -62,7 +62,7 @@ move_uploaded_file($tempname , $folder);
         }
     }
 
-    // Delete admin data
+    // Delete news
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
     $sql = "DELETE FROM news WHERE id='$id'";
@@ -77,7 +77,7 @@ if (isset($_GET['delete_id'])) {
 }
 }
 
-// Adding admin data
+// Adding news
 if (isset($_POST['add'])) {
     $id = $_POST['id'];
     $title = $_POST['title'];
@@ -110,7 +110,7 @@ if (isset($_POST['add'])) {
 </head>
 <body>
 
-<!-- Form to Add or Edit Admin -->
+<!-- Form to Add or Edit news-->
 <div class="container" id="form-container">
     <h2>Enter News</h2>
     <form method="post" action="">
@@ -140,11 +140,11 @@ if (isset($_POST['add'])) {
 
 
 
-    <!-- Admin Table -->
+    <!-- News Table -->
     <div class="container" id="table-container">
     <h2>List of Users</h2>
     <br>
-    <!-- Fetch and Display List of Admins -->
+    <!-- Fetch and Display List of News -->
     <table class="table">
         <thead>
             <tr>
