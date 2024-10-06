@@ -40,8 +40,6 @@ else {
 
 
 
-
-
 ?>
         <div class="container">
 

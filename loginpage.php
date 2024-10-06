@@ -16,11 +16,8 @@
     <body>
     
         <div class="container">
-<<<<<<< Updated upstream
-=======
-   
-            <form action="">
->>>>>>> Stashed changes
+
+   <form action="" method="post">
                 <h1>Login</h1>
                 
                 
